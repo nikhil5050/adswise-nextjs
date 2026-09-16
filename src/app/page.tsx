@@ -1,6 +1,5 @@
 import ScrollSpotlight from "@/components/effects/ScrollSpotlight";
-import Hero from "@/components/hero/Hero";
-import IntroSection from "@/components/sections/IntroSection";
+import HeroScrollVideoReveal from "@/components/ui/hero-scroll-video-pin-reveal";
 import ServicesSection from "@/components/sections/ServicesSection";
 import ProcessSection from "@/components/sections/ProcessSection";
 import WorkSection from "@/components/sections/WorkSection";
@@ -14,8 +13,7 @@ export default function Home() {
   return (
     <>
       <ScrollSpotlight />
-      <Hero />
-      <IntroSection />
+      <HeroScrollVideoReveal />
       <ServicesSection />
       <ProcessSection />
       <WorkSection />
