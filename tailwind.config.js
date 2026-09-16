@@ -1,20 +1,32 @@
+import typography from "@tailwindcss/typography";
+
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  darkMode: "class",
+  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
       fontFamily: {
-        sans: ['"EB Garamond"', 'serif'],
+        display: ["var(--font-display)", "serif"],
+        sans: ["var(--font-sans)", "sans-serif"],
       },
       colors: {
-        background: '#FFFFFF',
-        foreground: '#111827',
-        primary: '#3B82F6',
-        muted: '#F3F4F6',
-        'muted-foreground': '#6B7280',
-       
-      }
+        background: "#0A0A0A",
+        surface: "#1E1E1E",
+        moss: "#68735F",
+        sand: "#CBB8A0",
+        teal: "#143D4A",
+        ink: "#F3F0EA",
+        muted: "rgba(243,240,234,0.55)",
+      },
+      letterSpacing: {
+        tightest: "-0.04em",
+      },
+      transitionTimingFunction: {
+        "expo-out": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "expo-in-out": "cubic-bezier(0.87, 0, 0.13, 1)",
+      },
     },
   },
-  plugins: [],
+  plugins: [typography],
 };

@@ -317,7 +317,7 @@ at Adswise Marketing today. </p>
     date: "Nov 11, 2025",
     readTime: "6 min read",
     image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmcv9oNdusDkbk7KD-voxO6-ivBR6pL9JbBg&s?w=800&q=80",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
     tags: ["Social Media", "Marketing Tools", "Engagement"],
     views: "7.3K",
     content: `
@@ -552,7 +552,7 @@ to enhance keyword tracking, content visibility, and integrated digital strategy
     date: "May 04, 2026",
     readTime: "7 min read",
     image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQP8X8ROpwCDko7N9bZL0SxPS4fnVqV_lM4cA&s",
+      "https://images.unsplash.com/photo-1589254065878-42c9da997008?w=800&q=80",
     tags: ["Digital Marketing", "Beginners", "Basics"],
     views: "1.2K",
     content: `
@@ -2181,7 +2181,7 @@ to enhance keyword tracking, content visibility, and integrated digital strategy
     date: "May 04, 2026",
     readTime: "7 min read",
     image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfMHxpqPqGpg_sV-ONEIcdynf4_4ykH7OS3Q&s",
+      "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
     tags: ["Digital Marketing", "Tools", "SEO", "Automation"],
     views: "1.4K",
     content: `
