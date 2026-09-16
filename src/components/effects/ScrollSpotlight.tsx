@@ -55,13 +55,13 @@ export default function ScrollSpotlight() {
       <div ref={primaryRef} className="absolute left-1/2 top-0 h-[70vw] w-[70vw] max-h-[900px] max-w-[900px]">
         <div
           className="h-full w-full animate-[spotlight-pulse_8s_ease-in-out_infinite] rounded-full blur-[140px]"
-          style={{ background: "radial-gradient(circle, #ff3b3b 0%, rgba(255,59,59,0) 70%)" }}
+          style={{ background: "radial-gradient(circle, #CBB8A0 0%, rgba(203,184,160,0) 70%)" }}
         />
       </div>
       <div ref={secondaryRef} className="absolute left-1/2 top-1/3 h-[40vw] w-[40vw] max-h-[560px] max-w-[560px]">
         <div
           className="h-full w-full animate-[spotlight-pulse_10s_ease-in-out_infinite_1.5s] rounded-full blur-[120px]"
-          style={{ background: "radial-gradient(circle, #ff6b57 0%, rgba(255,107,87,0) 70%)" }}
+          style={{ background: "radial-gradient(circle, #2a7f99 0%, rgba(20,61,74,0) 70%)" }}
         />
       </div>
 
