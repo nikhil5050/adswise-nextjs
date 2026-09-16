@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/animations/gsap";
+import { useReducedMotion } from "@/lib/hooks/useReducedMotion";
 import { cn } from "@/lib/utils/cn";
 
 interface RevealTextProps {
@@ -23,11 +24,16 @@ export default function RevealText({
   scrub = false,
 }: RevealTextProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const reducedMotion = useReducedMotion();
   const Tag = as;
 
   useGSAP(
     () => {
       const targets = gsap.utils.toArray<HTMLElement>(".reveal-line-inner", containerRef.current!);
+      if (reducedMotion) {
+        gsap.set(targets, { yPercent: 0, opacity: 1 });
+        return;
+      }
 
       gsap.fromTo(
         targets,
@@ -47,7 +53,7 @@ export default function RevealText({
         }
       );
     },
-    { scope: containerRef }
+    { scope: containerRef, dependencies: [reducedMotion] }
   );
 
   return (
