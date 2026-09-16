@@ -1,3 +1,4 @@
+import ScrollSpotlight from "@/components/effects/ScrollSpotlight";
 import Hero from "@/components/hero/Hero";
 import IntroSection from "@/components/sections/IntroSection";
 import ServicesSection from "@/components/sections/ServicesSection";
@@ -12,6 +13,7 @@ import CTASection from "@/components/sections/CTASection";
 export default function Home() {
   return (
     <>
+      <ScrollSpotlight />
       <Hero />
       <IntroSection />
       <ServicesSection />
