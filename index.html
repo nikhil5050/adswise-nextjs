@@ -6,6 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="index, follow" />
 
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var firstScript = d.getElementsByTagName(s)[0];
+        var gtmScript = d.createElement(s);
+        var dataLayerParam = l != "dataLayer" ? "&l=" + l : "";
+        gtmScript.async = true;
+        gtmScript.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dataLayerParam;
+        firstScript.parentNode.insertBefore(gtmScript, firstScript);
+      })(window, document, "script", "dataLayer", "GTM-TGHVM24X");
+    </script>
+    <!-- End Google Tag Manager -->
+
     <!-- Title -->
     <title>AdsWise Marketing | Creative Advertising & Digital Agency</title>
 
@@ -17,7 +32,6 @@
     />
 
     <!-- Primary SEO -->
-
     <meta
       name="keywords"
       content="AdsWise Marketing, advertising agency, digital marketing, branding, social media marketing, ad agency in Pune"
@@ -28,44 +42,24 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      rel="preload"
+      as="style"
       href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap"
+    />
+    <link
       rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap"
+      />
+    </noscript>
 
-    <!-- Canonical -->
-    <link rel="canonical" href="https://www.adswisemarketing.com/" />
-
-    <!-- Open Graph -->
-    <meta property="og:site_name" content="AdsWise Marketing" />
-    <meta
-      property="og:title"
-      content="AdsWise Marketing | Creative Advertising & Digital Agency"
-    />
-    <meta
-      property="og:description"
-      content="Grow your brand with AdsWise Marketing – creative advertising, digital strategy, and high-performance marketing."
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.adswisemarketing.com/" />
-    <meta
-      property="og:image"
-      content="https://www.adswisemarketing.com/og-image.jpg"
-    />
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="AdsWise Marketing | Creative Advertising & Digital Agency"
-    />
-    <meta
-      name="twitter:description"
-      content="Advertising, branding & digital growth solutions for modern brands."
-    />
-    <meta
-      name="twitter:image"
-      content="https://www.adswisemarketing.com/og-image.jpg"
-    />
+    <!-- SEO tags are managed dynamically by react-helmet-async -->
 
     <!-- Google Search Console -->
     <meta
@@ -73,76 +67,83 @@
       content="CoKCajIP6VVZdIq3L9uZJ2BuVeEIK28O1dwsHkPs7uI"
     />
 
-    <!-- Google Analytics -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-PLN9VCBWMZ"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-PLN9VCBWMZ");
-    </script>
-
-    <!-- Meta Pixel Code -->
-    <script>
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', '24978386888485250');
-      fbq('track', 'PageView');
-    </script>
-    <!-- End Meta Pixel Code -->
-
-    <!-- Organization Schema -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "AdsWise Marketing",
-        "url": "https://www.adswisemarketing.com/",
-        "logo": "https://www.adswisemarketing.com/logo2%20(2).png",
-        "description": "AdsWise Marketing is a creative advertising and digital marketing agency.",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Pune",
-          "addressRegion": "Maharashtra",
-          "addressCountry": "IN"
-        },
-        "sameAs": [
-          "https://www.instagram.com/adswisemarketing",
-          "https://www.facebook.com/adswisemarketing",
-          "https://www.linkedin.com/company/adswisemarketing"
-        ]
-      }
-    </script>
-
-    <!-- Microsoft Clarity -->
+    <!-- Deferred Third Party Scripts -->
     <script type="text/javascript">
-      (function (c, l, a, r, i, t, y) {
-        c[a] =
-          c[a] ||
-          function () {
-            (c[a].q = c[a].q || []).push(arguments);
+      // Delay executing heavy third party scripts until after page load or user interaction
+      function loadThirdPartyScripts() {
+        if (window.thirdPartyScriptsLoaded) return;
+        window.thirdPartyScriptsLoaded = true;
+
+        // Google Analytics
+        var gtagScript = document.createElement('script');
+        gtagScript.async = true;
+        gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-PLN9VCBWMZ';
+        document.head.appendChild(gtagScript);
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        window.gtag = gtag;
+        gtag("js", new Date());
+        gtag("config", "G-PLN9VCBWMZ");
+
+        // Meta Pixel Code
+        !(function (f, b, e, v, n, t, s) {
+          if (f.fbq) return;
+          n = f.fbq = function () {
+            n.callMethod
+              ? n.callMethod.apply(n, arguments)
+              : n.queue.push(arguments);
           };
-        t = l.createElement(r);
-        t.async = 1;
-        t.src = "https://www.clarity.ms/tag/" + i;
-        y = l.getElementsByTagName(r)[0];
-        y.parentNode.insertBefore(t, y);
-      })(window, document, "clarity", "script", "w0ebdtng9l");
+          if (!f._fbq) f._fbq = n;
+          n.push = n;
+          n.loaded = !0;
+          n.version = "2.0";
+          n.queue = [];
+          t = b.createElement(e);
+          t.async = !0;
+          t.src = v;
+          s = b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t, s);
+        })(
+          window,
+          document,
+          "script",
+          "https://connect.facebook.net/en_US/fbevents.js",
+        );
+        fbq("init", "24978386888485250");
+        fbq("track", "PageView");
+
+        // Microsoft Clarity
+        (function (c, l, a, r, i, t, y) {
+          c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
+          t = l.createElement(r);
+          t.async = 1;
+          t.src = "https://www.clarity.ms/tag/" + i;
+          y = l.getElementsByTagName(r)[0];
+          y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", "w0ebdtng9l");
+      }
+
+      // Load scripts on user interaction or after a delay
+      ['scroll', 'mousemove', 'touchstart'].forEach(function(event) {
+        window.addEventListener(event, loadThirdPartyScripts, { once: true, passive: true });
+      });
+      setTimeout(loadThirdPartyScripts, 5000); // Fallback after 5 seconds
     </script>
   </head>
 
   <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-TGHVM24X"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+        title="Google Tag Manager"
+      ></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
     <!-- Meta Pixel NoScript -->
     <noscript>
       <img

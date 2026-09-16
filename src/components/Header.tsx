@@ -133,7 +133,7 @@ export default function Header() {
                             className="absolute top-[80%] -left-4 w-72 pt-2"
                           >
                             {/* Dropdown background Silver #C0C0C0 with Charcoal #363636 border */}
-                            <div className="bg-[#F4F4F4] rounded-lg shadow-xl overflow-hidden py-2 border-t-4 border-[#363636]">
+                            <div className="bg-[#F4F4F4] rounded-lg shadow-xl overflow-y-auto max-h-[400px] py-2 border-t-4 border-[#363636]">
                               {dropdownItems.map((item) => (
                                 <Link
                                   key={item.to}

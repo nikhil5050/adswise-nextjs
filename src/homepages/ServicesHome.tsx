@@ -132,7 +132,7 @@ export default function ServicesHome() {
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header Section */}
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#363636] mb-4 text-center">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-bold text-[#363636] mb-4 text-center">
             Our <span className="text-[#536186]">Services</span>
           </h2>
 

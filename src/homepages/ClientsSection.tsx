@@ -74,6 +74,11 @@ const logos: Logo[] = [
     src: "https://adswisemarketing.com//logoset.png",
     alt: "set logo",
   },
+  {
+    id: "logo14",
+    src: "https://cherishdermaclinic.com/logo.png",
+    alt: "cherish derma clinic logo",
+  },
 ];
 
 export default function ClientsSection(): JSX.Element {

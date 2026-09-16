@@ -7,6 +7,7 @@ import ClientsSection from "../homepages/ClientsSection";
 // import StatsSection from "../homepages/StatsSection";
 import Reviews from "../homepages/Reviews";
 import Project from "../homepages/Project";
+import Portfolio from "../homepages/portfolio";
 // import OurGraphics from "../homepages/OurGraphics";
 
 function Home() {
@@ -15,6 +16,7 @@ function Home() {
       <Hero />
       <MicroCredibility />
       <Features />
+      <Portfolio />
       {/* <StatsSection /> */}
       <Services />
       <ClientsSection />

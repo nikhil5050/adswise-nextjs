@@ -7,6 +7,7 @@ interface SEOProps {
   url?: string;
   image?: string;
   canonical?: string;
+  keywords?: string;
 }
 
 const siteName = "AdsWise Marketing";
@@ -16,9 +17,11 @@ const defaultImage = `${baseDomain}/og-image.jpg`;
 const SEO = ({
   title = "AdsWise Marketing | Creative Advertising & Digital Agency",
   description = "AdsWise Marketing is a full-service advertising and digital marketing agency offering branding, creative ads, social media and performance marketing.",
+  
   url,
   image = defaultImage,
   canonical,
+  keywords,
 }: SEOProps) => {
   const location = useLocation();
   const currentPath = location.pathname;
@@ -33,19 +36,19 @@ const SEO = ({
   //   finalUrl = `${baseDomain}${finalUrl}`;
   // }
 
-  // Ensure finalCanonical doesn't just point to the root domain
-  let finalCanonical = canonical || currentPath;
+  const origin =
+    typeof window !== "undefined" && window.location.origin
+      ? window.location.origin
+      : baseDomain;
 
+  let finalCanonical = canonical || currentPath;
   if (finalCanonical.startsWith("/")) {
-    // If it's just "/", it becomes "https://www.adswisemarketing.com/"
-    // If it's "/about-us", it becomes "https://www.adswisemarketing.com/about-us"
-    finalCanonical = `${baseDomain}${finalCanonical === "/" ? "" : finalCanonical}`;
+    finalCanonical = `${origin}${finalCanonical}`;
   }
 
-  // Apply the same logic to finalUrl for Open Graph
   let finalUrl = url || currentPath;
   if (finalUrl.startsWith("/")) {
-    finalUrl = `${baseDomain}${finalUrl === "/" ? "" : finalUrl}`;
+    finalUrl = `${origin}${finalUrl}`;
   }
 
   return (
@@ -53,6 +56,7 @@ const SEO = ({
       {/* Basic Meta */}
       <title>{title}</title>
       <meta name="description" content={description} />
+      {keywords && <meta name="keywords" content={keywords} />}
       <link rel="canonical" href={finalCanonical} />
 
       {/* Open Graph */}
@@ -68,6 +72,21 @@ const SEO = ({
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
+
+      {/* Meta Pixel */}
+      <script>{`
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '845799078169611');
+        fbq('track', 'PageView');
+      `}</script>
+      <noscript>{`<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=845799078169611&ev=PageView&noscript=1" />`}</noscript>
 
       {/* Schema */}
       <script type="application/ld+json">

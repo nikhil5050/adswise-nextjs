@@ -132,8 +132,8 @@ const BrandDevelopmentServices = () => {
             </motion.span>
 
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold mb-6 mt-4 leading-tight text-[#363636]">
-              best branding agency - <br />
-              <span className="text-[#536186]">AdsWise Marketing</span>
+              Best branding agency - <br />
+              <span className="text-[#536186]">Adswise Marketing</span>
             </h1>
 
             <p className="text-lg sm:text-xl text-[#363636]/80 mb-10 leading-relaxed font-medium max-w-3xl mx-auto">

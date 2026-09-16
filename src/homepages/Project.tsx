@@ -44,11 +44,11 @@ const Project = () => {
     },
     {
       id: 6,
-      title: "E-commerce Platform",
-      description: "Explore the world",
+      title: "Cherish Derma Clinic",
+      description: "Advanced skincare solutions",
       image:
-        "https://adswisemarketing.com/public/e-commerce.png?w=400&h=300&fit=crop",
-      link: "https://e-commerce-application-vxn8.vercel.app/",
+        "https://adswisemarketing.com//public/cherish.png?w=400&h=300&fit=crop",
+      link: "https://cherishdermaclinic.com/",
     },
   ];
 
@@ -84,11 +84,11 @@ const Project = () => {
           >
             {/* Card Background: Silver #C0C0C0 / Border: Stone Gray #536186 */}
             <article className="relative bg-white rounded-2xl shadow-xl overflow-hidden border border-[#C0C0C0] group-hover:border-[#536186] transition-colors duration-500">
-              <div className="relative h-64 overflow-hidden">
+              <div className="relative h-64 overflow-hidden bg-[#F4F4F4]">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
                 />
 
                 {/* Subtle Fog Gray overlay on image hover */}

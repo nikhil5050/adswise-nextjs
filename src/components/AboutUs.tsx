@@ -244,6 +244,8 @@ export default function AboutUs() {
             <source
               src="https://v1.pinimg.com/videos/mc/720p/19/29/af/1929afadfcbc1d3ad6c819471afabe94.mp4"
               type="video/mp4"
+              muted
+              loop
             />
           </video>
           {/* Overlay to ensure text readability */}
@@ -278,7 +280,7 @@ export default function AboutUs() {
               </p>
 
               <a
-                href="https://www.linkedin.com/in/gaurav-jagtap-%F0%9F%92%8E-9371051b6/"
+                href="https://www.linkedin.com/in/gauravjagtapadswise/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-[#B0C4DE] hover:text-white font-medium text-lg mb-8 "

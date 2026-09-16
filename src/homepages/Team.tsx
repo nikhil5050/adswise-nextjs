@@ -1,58 +1,106 @@
 import React, { useState } from "react";
+import { Linkedin } from "lucide-react";
 
 const Team = () => {
-  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const teamMembers = [
     {
       name: "Shalmali Shinde",
       role: "CONSULTING HEAD",
+      skills: ["Strategy", "Business Consulting", "Growth Planning"],
+      linkedin: "https://www.linkedin.com/search/results/people/?keywords=Shalmali%20Shinde",
       image:
         "https://i.pinimg.com/736x/32/4f/a4/324fa4d50eab63a93f12dc9fee6720cc.jpg?w=400&h=400&fit=crop",
     },
     {
-      name: "Nikhil M",
-      role: "WEB DEVELOPER",
-      image:
-        "https://adswisemarketing.com/public/team/nikhil.jpeg?w=400&h=400&fit=crop",
-    },
-    {
       name: "Rohit Kanse",
-      role: "Video Editor",
+      role: "Media Department Head",
+      skills: ["Media Buying", "Campaign Strategy", "Performance Ads"],
+      linkedin: "https://www.linkedin.com/in/rohit-kanse-82a3b8179/",
       image:
         "https://adswisemarketing.com//public/team/rohitkanase.jpeg?w=400&h=400&fit=crop",
     },
     {
-      name: "Saniya Pathan",
-      role: "Digital Marketer",
-      // Added https://i.pinimg.com prefix to fix the broken link you had
-      image: "https://adswisemarketing.com/public/team/saniyapathan.png",
+      name: "Nikhil M",
+      role: "Web Developer Head ",
+      skills: ["Web Development", "Frontend Development"],
+      linkedin: "https://www.linkedin.com/in/nikhil-mandlik-574973322/",
+      image:
+        "https://adswisemarketing.com/public/team/nikhil.jpeg?w=400&h=400&fit=crop",
     },
     {
-      name: "Pooja Shete",
+      name: "Sujal Gupta",
       role: "Graphic Designer",
+      skills: ["Graphic Design", "Branding", "photoshop"],
+      linkedin: "https://www.linkedin.com/in/sujal-gupta-852b0a27b/",
       // Added https://i.pinimg.com prefix to fix the broken link you had
-      image: "https://adswisemarketing.com/public/team/pooja.jpeg",
+      image: "https://adswisemarketing.com//public/team/sujal%20gupta.jpeg",
     },
+    // {
+    //   name: "Pooja Shete",
+    //   role: "Graphic Designer",
+    //   // Added https://i.pinimg.com prefix to fix the broken link you had
+    //   image: "https://adswisemarketing.com/public/team/pooja.jpeg",
+    // },
     {
       name: "Pradnya Apune",
-      role: "Jr. Digital Marketer",
+      role: "Digital Marketer",
+      skills: ["Digital Marketing Executive", "| Passionate About SEO, SMM, SEM & Content Strategya"],
+      linkedin: "https://www.linkedin.com/in/pradnya-aapune-2194b4344/",
       // Added https://i.pinimg.com prefix to fix the broken link you had
       image: "https://adswisemarketing.com/public/team/pradnya.jpeg",
     },
     {
-      name: "Pratiksha Desai",
-      role: "Jr. Digital Marketer",
-      // Added https://i.pinimg.com prefix to fix the broken link you had
-      image: "https://adswisemarketing.com/public/team/pratikashdesai.jpeg",
-    },
-    {
-      name: "Vaibhav Parade",
-      role: "Video Editor",
+      name: "Jayashri Naphade",
+      role: "Digital Marketer",
+      skills: ["Google Ads", "Marketing Automation", "E-commerce Management"],
+      linkedin: "https://www.linkedin.com/in/jayashri-patil93",
       // Added https://i.pinimg.com prefix to fix the broken link you had
       image:
-        "https://i.pinimg.com/736x/49/e9/1e/49e91eee07e896b227617f0629b6530a.jpg",
+        "https://adswisemarketing.com/public/team/jayashri.jpeg",
     },
+    {
+      name: "Karishma Sharma ",
+      role: "Jr. Digital Marketer",
+      skills: ["Content Creation", "Social Media", "Campaign Support"],
+      linkedin: "https://www.linkedin.com/search/results/people/?keywords=Karishma%20Sharma",
+      image:
+        "https://adswisemarketing.com/public/team/karishma.png",
+    },
+    {
+      name: "Pooja Pushkar",
+      role: "Jr. Digital Marketer",
+      skills: ["Digital Marketing", "Content Planning", "Research"],
+      linkedin: "https://www.linkedin.com/search/results/people/?keywords=Pooja%20Pushkar",
+      image:
+        "https://adswisemarketing.com/public/team/PoojaPushkar.jpeg",
+
+    },
+    {
+      name: "Ganesh More",
+      role: "Senior Business Development Manager",
+      skills: ["Performance marketer", "Content writer"],
+      linkedin: "https://www.linkedin.com/in/ganesh-more-992215300/",
+      image:
+        "https://adswisemarketing.com/public/team/GaneshAdswise.jpeg",
+    },
+    {
+      name: "Priyanka Mali",
+      role: "Content Creator",
+      skills: ["Social Media Marketing", "Content Strategy & Content Planning", "Sales Strategy"],
+      linkedin: "https://www.linkedin.com/in/priyanka-mali-716995247/",
+      image:
+        "https://adswisemarketing.com/public/team/pradnyaAdswise.PNG",
+    },
+    {
+      name: "Komal kumari ",
+      role: "Content Writer",
+      skills: ["Content Creation", "Social Media Management", "SEO"],
+      linkedin: "linkedin.com/in/komal-kumari-b7a655276",
+      image:
+        "https://adswisemarketing.com/public/team/komalAdswise.jpeg",
+    }
   ];
 
   return (
@@ -110,13 +158,33 @@ const Team = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
 
                 {/* Text Content */}
-                <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                  <h3 className="text-xl font-bold text-white">
+                <div className="absolute bottom-0 left-0 right-0 min-w-0 p-4 sm:p-5 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                  <h3 className="text-xl font-bold text-white break-words">
                     {member.name}
                   </h3>
                   <p className="text-xs text-yellow-500 font-semibold uppercase tracking-wider mt-1">
                     {member.role}
                   </p>
+                  <div className="flex flex-wrap gap-1.5 mt-3">
+                    {member.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="max-w-full rounded-sm bg-black/55 px-2 py-1 text-[10px] leading-tight text-gray-100"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                  <a
+                    href={member.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex w-full items-center gap-2 text-xs text-[#B0C4DE] hover:text-white mt-3 transition-colors"
+                    aria-label={`View ${member.name.trim()}'s LinkedIn profile`}
+                  >
+                    <Linkedin size={14} />
+                    <span>LinkedIn Profile</span>
+                  </a>
                 </div>
               </div>
             </div>

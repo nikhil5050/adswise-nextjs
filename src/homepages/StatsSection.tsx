@@ -100,7 +100,8 @@ const StatsSection: React.FC = () => {
         {/* LEFT COLUMN: Text Content */}
         <motion.div variants={textVariants} className="space-y-6">
           <header>
-            <h3 className="text-xl md:text-2xl font-semibold text-[#536186] mb-2">
+            <h3 c
+            lassName="text-xl md:text-2xl font-semibold text-[#536186] mb-2">
               Your Brand Deserves More
             </h3>
             <div className="text-5xl sm:text-6xl md:text-7xl font-extrabold text-[#363636] leading-tight tracking-tighter">

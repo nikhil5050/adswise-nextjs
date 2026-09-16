@@ -119,93 +119,106 @@ export default function Hero() {
     </div>
   );
 
-  const HeroContent = ({ isDark = false }) => (
-    <div
-      className={`w-full min-h-[100dvh] flex flex-col lg:flex-row items-center justify-center lg:justify-between px-6 md:px-12 lg:px-20 py-24 md:py-32 lg:py-20 gap-12 lg:gap-8 ${isDark ? "text-white" : "text-[#363636]"}`}
-    >
-      {/* Left Content Column */}
-      <div className="flex flex-col flex-[1.4] max-w-4xl lg:pr-12 w-full mt-12 lg:mt-0">
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          {/* <span className={`inline-block px-4 py-1.5 rounded-full text-[10px] md:text-xs font-bold tracking-widest uppercase mb-6 border ${
-            isDark ? 'border-white/30 text-white' : 'border-[#536186]/30 text-[#536186]'
-          }`}>
-            Strategy-Driven Marketing
-          </span> */}
+  const HeroContent = ({ isDark = false, headingAs = "h1" }: { isDark?: boolean; headingAs?: "h1" | "h2" }) => {
+    return (
+      <div
+        className={`w-full min-h-[100dvh] flex flex-col lg:flex-row items-center justify-center lg:justify-between px-6 md:px-12 lg:px-20 py-24 md:py-32 lg:py-20 gap-12 lg:gap-8 ${isDark ? "text-white" : "text-[#363636]"}`}
+      >
+        {/* Left Content Column */}
+        <div className="flex flex-col flex-[1.4] max-w-4xl lg:pr-12 w-full mt-12 lg:mt-0">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            {/* <span className={`inline-block px-4 py-1.5 rounded-full text-[10px] md:text-xs font-bold tracking-widest uppercase mb-6 border ${
+              isDark ? 'border-white/30 text-white' : 'border-[#536186]/30 text-[#536186]'
+            }`}>
+              Strategy-Driven Marketing
+            </span> */}
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-extrabold leading-[1.05] mb-6 tracking-tight mt-4">
-            B2B DIGITAL MARKETING AGENCY
-            <br className="hidden lg:block" />
-            <span
-              className={`block mt-1 lg:mt-3 ${isDark ? "text-blue-200" : "text-[#536186]"}`}
-            >
-              FOR GROWTH-FOCUSED BRANDS.
-            </span>
-          </h1>
+            {headingAs === "h1" ? (
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-extrabold leading-[1.05] mb-6 tracking-tight mt-16">
+                B2B Digital Marketing Company in Pune 
+                <br className="hidden lg:block" />
+              </h1>
+            ) : (
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-extrabold leading-[1.05] mb-6 tracking-tight mt-16">
+                B2B Digital Marketing Company in Pune 
+                <br className="hidden lg:block" />
+              </h2>
+            )}
 
-          <div className="space-y-6 mb-10">
-            <h2 className="text-xl md:text-2xl font-medium leading-tight max-w-2xl opacity-90">
-              No vanity metrics. Only qualified pipeline growth.
-              <span className="block  decoration-2 underline-offset-4">
-                Strategy-driven marketing built for serious B2B brands.
-              </span>
-            </h2>
-            <p
-              className={`text-base md:text-lg lg:text-xl font-light max-w-2xl leading-relaxed ${isDark ? "text-gray-300" : "text-gray-600"}`}
-            >
-              Most agencies sell “packages”. At{" "}
-              <span className="font-semibold">Adswise Marketing</span>, we build
-              systems – research-driven digital engines that attract the right
-              audience, turn them into qualified enquiries and support your
-              sales team with clear, usable data.
-            </p>
-          </div>
-
-          {/* CTA Section */}
-          <div className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-5 items-start sm:items-center mb-10 w-full">
-            <Link
-              to="/contact"
-              className={`group w-full sm:w-auto justify-center px-8 py-4 rounded-lg font-bold flex items-center gap-3 transition-all ${
-                isDark
-                  ? "bg-white text-[#536186] hover:bg-blue-50"
-                  : "bg-[#536186] text-white hover:bg-[#3d4866]"
-              }`}
-            >
-              Book a Personalized Strategy Call
-              <ArrowRight
-                size={20}
-                className="group-hover:translate-x-1 transition-transform"
-              />
-            </Link>
-          </div>
-
-          {/* Service Ribbon */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 opacity-80 w-full">
-            {services.map((s, i) => (
-              <div key={i} className="flex items-center gap-2">
-                <s.icon
-                  size={18}
-                  strokeWidth={2}
-                  className={`shrink-0 ${isDark ? "text-blue-300" : "text-[#536186]"}`}
-                />
-                <span className="text-[10px] md:text-[11px] font-bold uppercase tracking-wider">
-                  {s.title}
+            <div className="space-y-6 mb-10">
+              {/* <h2 className="text-xl md:text-2xl font-medium leading-tight max-w-2xl opacity-90">
+                No vanity metrics. Only qualified pipeline growth.
+                <span className="block  decoration-2 underline-offset-4">
+                  Strategy-driven marketing built for serious B2B brands.
                 </span>
-              </div>
-            ))}
-          </div>
-        </motion.div>
-      </div>
+              </h2> */}
+              <h2 className="text-xl md:text-3xl font-medium leading-tight max-w-2xl opacity-90">
+                <span
+                  className={`block mt-1 lg:mt-3 ${isDark ? "text-blue-200" : "text-[#536186]"}`}
+                >
+                  FOR GROWTH-FOCUSED BRANDS.
+                </span>
+              </h2>
+              <p
+                className={`text-base md:text-lg lg:text-xl font-light max-w-2xl leading-relaxed ${
+                  isDark ? "text-gray-300" : "text-gray-600"
+                }`}
+              >
+                <span className="font-semibold">Adswise Marketing</span> is a results-driven
+                B2B digital marketing agency helping businesses grow through SEO, Google Ads,
+                social media marketing, website development and lead generation. We create
+                data-driven strategies that increase traffic, generate qualified leads and
+                deliver measurable business growth.
+              </p>
+            </div>
 
-      {/* Right Visual Column */}
-      <div className="hidden lg:flex flex-1 items-center justify-center">
-        <GrowthVisual isDark={isDark} />
+            {/* CTA Section */}
+            <div className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-5 items-start sm:items-center mb-10 w-full">
+              <Link
+                to="/contact"
+                className={`group w-full sm:w-auto justify-center px-8 py-4 rounded-lg font-bold flex items-center gap-3 transition-all ${
+                  isDark
+                    ? "bg-white text-[#536186] hover:bg-blue-50"
+                    : "bg-[#536186] text-white hover:bg-[#3d4866]"
+                }`}
+              >
+                Book a Personalized Strategy Call
+                <ArrowRight
+                  size={20}
+                  className="group-hover:translate-x-1 transition-transform"
+                />
+              </Link>
+            </div>
+
+            {/* Service Ribbon */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 opacity-80 w-full">
+              {services.map((s, i) => (
+                <div key={i} className="flex items-center gap-2">
+                  <s.icon
+                    size={18}
+                    strokeWidth={2}
+                    className={`shrink-0 ${isDark ? "text-blue-300" : "text-[#536186]"}`}
+                  />
+                  <span className="text-[10px] md:text-[11px] font-bold uppercase tracking-wider">
+                    {s.title}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Right Visual Column */}
+        <div className="hidden lg:flex flex-1 items-center justify-center">
+          <GrowthVisual isDark={isDark} />
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   return (
     <div className="w-full font-sans antialiased">
@@ -225,7 +238,7 @@ export default function Hero() {
           {/* Background Video */}
           <div className="absolute inset-0 pointer-events-none z-0">
             <video
-              src="https://v1.pinimg.com/videos/mc/720p/9a/7b/6d/9a7b6d89796e0a4dcf41459432312fda.mp4"
+              src="https://adswisemarketing.com//bg3.mp4"
               autoPlay
               loop
               muted
@@ -236,7 +249,7 @@ export default function Hero() {
             <div className="absolute inset-0 bg-[#1E293B]/80" />
           </div>
           <div className="relative z-10 w-full h-full">
-            <HeroContent isDark={true} />
+            <HeroContent isDark={true} headingAs="h2" />
           </div>
         </div>
       </div>
