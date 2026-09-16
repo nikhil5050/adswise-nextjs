@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import { useGSAP } from "@gsap/react";
-import { gsap, ScrollTrigger } from "@/lib/animations/gsap";
+import { gsap } from "@/lib/animations/gsap";
 import { useReducedMotion } from "@/lib/hooks/useReducedMotion";
 import { strategicGrowthFramework } from "@/data/about";
 
@@ -21,22 +21,21 @@ export default function ProcessSection() {
       if (!isDesktop || reducedMotion || !trackRef.current || !sectionRef.current) return;
 
       const track = trackRef.current;
-      const distance = track.scrollWidth - window.innerWidth;
-      if (distance <= 0) return;
+      const getDistance = () => Math.max(0, track.scrollWidth - window.innerWidth);
+      if (getDistance() <= 0) return;
 
       gsap.to(track, {
-        x: -distance,
+        x: () => -getDistance(),
         ease: "none",
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: () => `+=${distance}`,
+          end: () => `+=${getDistance()}`,
           scrub: true,
           pin: true,
+          invalidateOnRefresh: true,
         },
       });
-
-      return () => ScrollTrigger.getAll().forEach((t) => t.kill());
     },
     { scope: sectionRef, dependencies: [isDesktop, reducedMotion] }
   );
