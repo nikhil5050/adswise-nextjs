@@ -3,7 +3,7 @@
 import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import { Play } from "lucide-react";
-import { gsap, ScrollTrigger, SplitText } from "@/lib/animations/gsap";
+import { gsap, SplitText } from "@/lib/animations/gsap";
 import { useReducedMotion } from "@/lib/hooks/useReducedMotion";
 
 export interface TagItem {
@@ -136,45 +136,70 @@ export const HeroScrollVideoReveal: React.FC<HeroScrollVideoRevealProps> = ({
 
     const mm = gsap.matchMedia();
 
-    const breakpoints: [string, number, number][] = [
-      ["(max-width: 639.9px)", 18, 1500],
-      ["(min-width: 640px) and (max-width: 1023.9px)", 12, 2000],
-      ["(min-width: 1024px)", 8, 2500],
-    ];
-
-    breakpoints.forEach(([query, startPercent, scrollDistance]) => {
-      mm.add(query, () => {
-        if (!videoBoxRef.current || !videoWrapperRef.current) return;
-
-        gsap.set(videoBoxRef.current, { clipPath: `circle(${startPercent}% at 50% 50%)` });
-
-        const pinTl = gsap.timeline({
+    mm.add("(max-width: 639.9px)", () => {
+      gsap.set(videoBoxRef.current, { clipPath: "circle(18% at 50% 50%)" });
+      gsap
+        .timeline({
           scrollTrigger: {
             trigger: videoWrapperRef.current,
             start: "top top",
-            end: `+=${scrollDistance}`,
+            end: "+=1500",
             scrub: 1.2,
             pin: true,
             pinSpacing: true,
             anticipatePin: 1,
-            invalidateOnRefresh: true,
           },
-        });
-
-        pinTl.fromTo(
+        })
+        .fromTo(
           videoBoxRef.current,
-          { clipPath: `circle(${startPercent}% at 50% 50%)` },
+          { clipPath: "circle(18% at 50% 50%)" },
           { clipPath: "circle(150% at 50% 50%)", ease: "none" }
         );
-
-        return () => pinTl.scrollTrigger?.kill();
-      });
     });
 
-    const refreshId = requestAnimationFrame(() => ScrollTrigger.refresh());
+    mm.add("(min-width: 640px) and (max-width: 1023.9px)", () => {
+      gsap.set(videoBoxRef.current, { clipPath: "circle(12% at 50% 50%)" });
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: videoWrapperRef.current,
+            start: "top top",
+            end: "+=2000",
+            scrub: 1.3,
+            pin: true,
+            pinSpacing: true,
+            anticipatePin: 1,
+          },
+        })
+        .fromTo(
+          videoBoxRef.current,
+          { clipPath: "circle(12% at 50% 50%)" },
+          { clipPath: "circle(150% at 50% 50%)", ease: "none" }
+        );
+    });
+
+    mm.add("(min-width: 1024px)", () => {
+      gsap.set(videoBoxRef.current, { clipPath: "circle(8% at 50% 50%)" });
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: videoWrapperRef.current,
+            start: "top top",
+            end: "+=2500",
+            scrub: 1.5,
+            pin: true,
+            pinSpacing: true,
+            anticipatePin: 1,
+          },
+        })
+        .fromTo(
+          videoBoxRef.current,
+          { clipPath: "circle(8% at 50% 50%)" },
+          { clipPath: "circle(150% at 50% 50%)", ease: "none" }
+        );
+    });
 
     return () => {
-      cancelAnimationFrame(refreshId);
       split?.revert();
       revealTl.kill();
       mm.revert();
