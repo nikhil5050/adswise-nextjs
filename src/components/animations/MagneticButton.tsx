@@ -12,6 +12,9 @@ interface MagneticButtonProps {
   as?: "button" | "div";
   onClick?: () => void;
   strength?: number;
+  /** Only used when `as="button"`. Defaults to "button" so it never submits a form by accident. */
+  type?: "button" | "submit";
+  disabled?: boolean;
 }
 
 export default function MagneticButton({
@@ -20,6 +23,8 @@ export default function MagneticButton({
   as = "div",
   onClick,
   strength = 0.35,
+  type = "button",
+  disabled,
 }: MagneticButtonProps) {
   const ref = useRef<HTMLDivElement>(null);
   const reducedMotion = useReducedMotion();
@@ -42,7 +47,6 @@ export default function MagneticButton({
     gsap.to(ref.current, { x: 0, y: 0, duration: 0.5, ease: "elastic.out(1, 0.4)" });
   };
 
-  const Tag = as;
 
   return (
     <div
@@ -51,9 +55,15 @@ export default function MagneticButton({
       onMouseLeave={handleLeave}
       className="inline-block"
     >
-      <Tag onClick={onClick} className={cn(className)}>
-        {children}
-      </Tag>
+      {as === "button" ? (
+        <button type={type} disabled={disabled} onClick={onClick} className={cn(className)}>
+          {children}
+        </button>
+      ) : (
+        <div onClick={onClick} className={cn(className)}>
+          {children}
+        </div>
+      )}
     </div>
   );
 }

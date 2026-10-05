@@ -12,7 +12,7 @@ export default function WorkSection() {
   return (
     <section className="bg-background px-6 py-28 md:px-10 md:py-40">
       <div className="mx-auto max-w-7xl">
-        <p className="mb-14 text-xs uppercase tracking-[0.3em] text-muted">Selected Work</p>
+        <p className="mb-14 text-xs uppercase tracking-[0.3em] text-growth">Selected Work</p>
 
         <div className="flex flex-col gap-24 md:gap-32">
           {caseStudies.map((study, i) => (
@@ -34,14 +34,14 @@ export default function WorkSection() {
               />
               <div className="md:w-1/2">
                 <span className="text-xs uppercase tracking-widest text-muted">{study.industry}</span>
-                <h3 className="mt-3 font-display text-3xl text-ink transition-colors group-hover:text-sand md:text-4xl">
+                <h3 className="mt-3 font-display text-3xl text-ink transition-colors group-hover:text-growth md:text-4xl">
                   {study.headline}
                 </h3>
                 <p className="mt-4 max-w-lg text-sm text-muted">{study.summary}</p>
                 <div className="mt-6 flex flex-wrap gap-8">
                   {study.results.map((result) => (
                     <div key={result.label}>
-                      <p className="font-display text-2xl text-sand">{result.value}</p>
+                      <p className="font-display text-2xl text-growth">{result.value}</p>
                       <p className="text-xs uppercase tracking-widest text-muted">{result.label}</p>
                     </div>
                   ))}
@@ -54,7 +54,7 @@ export default function WorkSection() {
         <div className="mt-20 text-center">
           <Link
             href="/case-studies"
-            className="text-sm uppercase tracking-widest text-ink underline decoration-sand/50 underline-offset-8 transition-colors hover:text-sand"
+            className="text-sm uppercase tracking-widest text-ink underline decoration-growth/50 underline-offset-8 transition-colors hover:text-growth"
           >
             View All Case Studies
           </Link>

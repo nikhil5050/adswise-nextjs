@@ -65,7 +65,7 @@ export default function ContactForm() {
             value={formData.name}
             onChange={handleChange}
             required
-            className="mt-2 w-full border-b border-white/20 bg-transparent py-3 text-ink outline-none focus:border-sand"
+            className="mt-2 w-full border-b border-growth/30 bg-transparent py-3 text-ink outline-none focus:border-growth"
           />
         </div>
         <div>
@@ -79,7 +79,7 @@ export default function ContactForm() {
             value={formData.email}
             onChange={handleChange}
             required
-            className="mt-2 w-full border-b border-white/20 bg-transparent py-3 text-ink outline-none focus:border-sand"
+            className="mt-2 w-full border-b border-growth/30 bg-transparent py-3 text-ink outline-none focus:border-growth"
           />
         </div>
       </div>
@@ -93,7 +93,7 @@ export default function ContactForm() {
           name="number"
           value={formData.number}
           onChange={handleChange}
-          className="mt-2 w-full border-b border-white/20 bg-transparent py-3 text-ink outline-none focus:border-sand"
+          className="mt-2 w-full border-b border-growth/30 bg-transparent py-3 text-ink outline-none focus:border-growth"
         />
       </div>
 
@@ -108,22 +108,21 @@ export default function ContactForm() {
           value={formData.message}
           onChange={handleChange}
           required
-          className="mt-2 w-full resize-none border-b border-white/20 bg-transparent py-3 text-ink outline-none focus:border-sand"
+          className="mt-2 w-full resize-none border-b border-growth/30 bg-transparent py-3 text-ink outline-none focus:border-growth"
         />
       </div>
 
       <div className="mt-4 flex items-center gap-6">
         <MagneticButton
           as="button"
+          type="submit"
+          disabled={isSubmitting}
           strength={0.3}
-          onClick={() => {
-            if (!isSubmitting) formRef.current?.requestSubmit();
-          }}
-          className="rounded-full border border-white/20 px-8 py-4 text-sm uppercase tracking-widest text-ink transition-colors hover:border-sand hover:text-sand"
+          className="rounded-full border border-growth/30 px-8 py-4 text-sm uppercase tracking-widest text-ink transition-colors hover:border-growth hover:text-growth"
         >
           {isSubmitting ? "Sending…" : "Send Message"}
         </MagneticButton>
-        {status === "success" && <p className="text-sm text-moss">Thanks — we&apos;ll be in touch shortly.</p>}
+        {status === "success" && <p className="text-sm text-growth">Thanks — we&apos;ll be in touch shortly.</p>}
         {status === "error" && <p className="text-sm text-red-400">Something went wrong. Please try again.</p>}
       </div>
     </form>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import IndustryPageTemplate from "@/components/templates/IndustryPageTemplate";
 import { industries } from "@/data/industries";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 export function generateStaticParams() {
   return industries.map((industry) => ({ slug: industry.slug }));
@@ -14,11 +15,11 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const industry = industries.find((i) => i.slug === slug);
   if (!industry) return {};
 
-  return {
-    title: `${industry.title} Marketing`,
+  return pageMetadata({
+    title: `${industry.title} Digital Marketing Agency in Pune`,
     description: industry.shortDescription,
-    alternates: { canonical: `/industries/${industry.slug}` },
-  };
+    path: `/industries/${industry.slug}`,
+  });
 }
 
 export default async function IndustryDetailPage({ params }: Params) {

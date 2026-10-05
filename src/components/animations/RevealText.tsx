@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { Fragment, useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/animations/gsap";
 import { useReducedMotion } from "@/lib/hooks/useReducedMotion";
@@ -23,7 +23,7 @@ export default function RevealText({
   stagger = 0.12,
   scrub = false,
 }: RevealTextProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLHeadingElement>(null);
   const reducedMotion = useReducedMotion();
   const Tag = as;
 
@@ -56,13 +56,18 @@ export default function RevealText({
     { scope: containerRef, dependencies: [reducedMotion] }
   );
 
+  // One heading element for all lines, so a multi-line title is a single h1/h2 to crawlers.
+  // The space between lines keeps the text readable ("SYSTEMS, NOT SERVICES.") but is not rendered in flex layout.
   return (
-    <div ref={containerRef} className={cn("flex flex-col gap-2", className)}>
+    <Tag ref={containerRef} className={cn("flex flex-col gap-2", className)}>
       {lines.map((line, i) => (
-        <div key={i} className="overflow-hidden">
-          <Tag className={cn("reveal-line-inner block", lineClassName)}>{line}</Tag>
-        </div>
+        <Fragment key={i}>
+          {i > 0 && " "}
+          <span className="block overflow-hidden">
+            <span className={cn("reveal-line-inner block", lineClassName)}>{line}</span>
+          </span>
+        </Fragment>
       ))}
-    </div>
+    </Tag>
   );
 }

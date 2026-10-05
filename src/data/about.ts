@@ -2,6 +2,7 @@ export interface FrameworkStep {
   num: string;
   title: string;
   description: string;
+  image: string;
 }
 
 export interface Differentiator {
@@ -65,30 +66,40 @@ export const strategicGrowthFramework: FrameworkStep[] = [
     title: "Market Intelligence & Research",
     description:
       "We analyse your industry, competitors, and customer decision journey to identify strategic growth opportunities.",
+    image:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop",
   },
   {
     num: "02",
     title: "Strategic Roadmap",
     description:
       "A documented plan covering positioning, channels, messaging, funnel structure, and measurement.",
+    image:
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=800&auto=format&fit=crop",
   },
   {
     num: "03",
     title: "Digital Infrastructure",
     description:
       "High-conversion sites, SEO architecture, analytics systems, and CRM integrations.",
+    image:
+      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=800&auto=format&fit=crop",
   },
   {
     num: "04",
     title: "Performance Campaigns",
     description:
       "Targeted search ads, social ads, SEO, and strategic content marketing.",
+    image:
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop",
   },
   {
     num: "05",
     title: "Continuous Optimisation",
     description:
       "Refining campaigns to increase conversion rates, reduce cost per lead, and maximise ROI.",
+    image:
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800&auto=format&fit=crop",
   },
 ];
 

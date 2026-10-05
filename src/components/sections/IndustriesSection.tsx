@@ -11,7 +11,7 @@ export default function IndustriesSection() {
   return (
     <section className="relative bg-surface px-6 py-28 md:px-10 md:py-40">
       <div className="mx-auto max-w-6xl">
-        <p className="mb-14 text-xs uppercase tracking-[0.3em] text-muted">Industries We Grow</p>
+        <p className="mb-14 text-xs uppercase tracking-[0.3em] text-growth">Industries We Grow</p>
 
         <div className="flex flex-col md:flex-row md:gap-16">
           <div className="flex flex-col md:w-1/2">
@@ -21,8 +21,8 @@ export default function IndustriesSection() {
                 href={`/industries/${industry.slug}`}
                 onMouseEnter={() => setActive(i)}
                 className={cn(
-                  "border-b border-white/10 py-6 font-display text-3xl uppercase transition-colors duration-300 md:text-5xl",
-                  active === i ? "text-sand" : "text-ink/50 hover:text-ink"
+                  "border-b border-ink/10 py-6 font-display text-3xl uppercase transition-colors duration-300 md:text-5xl",
+                  active === i ? "text-growth" : "text-ink/50 hover:text-ink"
                 )}
               >
                 {industry.title}
@@ -36,7 +36,7 @@ export default function IndustriesSection() {
               <ul className="mt-6 space-y-3">
                 {industries[active].solutions.slice(0, 3).map((solution) => (
                   <li key={solution.title} className="text-sm text-ink/80">
-                    <span className="text-sand">— </span>
+                    <span className="text-growth">— </span>
                     {solution.title}
                   </li>
                 ))}

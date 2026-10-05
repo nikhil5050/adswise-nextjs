@@ -3,11 +3,15 @@ import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/animations/SmoothScroll";
 import CustomCursor from "@/components/animations/CustomCursor";
-import Preloader from "@/components/layout/Preloader";
+import GlowField from "@/components/effects/GlowField";
+// import Preloader from "@/components/layout/Preloader";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import PageTransition from "@/components/layout/PageTransition";
 import { company } from "@/data/company";
+import JsonLd from "@/components/seo/JsonLd";
+import { DEFAULT_OG_IMAGE } from "@/lib/seo/metadata";
+import { FOUNDER_PAGE, siteGraph } from "@/lib/seo/schema";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -21,66 +25,68 @@ const inter = Inter({
   display: "swap",
 });
 
+const verification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
+
 export const metadata: Metadata = {
   metadataBase: new URL(company.domain),
   title: {
-    default: "AdsWise Marketing | Creative Advertising & Digital Growth Agency",
+    default: "AdsWise Marketing | Digital Marketing Agency in Pune",
     template: "%s | AdsWise Marketing",
   },
   description:
-    "AdsWise Marketing is a Pune-based digital marketing agency building creative campaigns, performance marketing and brand experiences that turn attention into growth.",
-  keywords:
-    "Digital Marketing Agency Pune, SEO Company Pune, Google Ads Agency Pune, Social Media Marketing Pune, Website Development Pune, Branding Agency Pune, Performance Marketing, AdsWise Marketing",
+    "AdsWise Marketing is a strategy-first digital marketing agency in Pune founded by Gaurav Jagtap — SEO, Google & Meta ads, social media, branding, websites and lead generation that deliver measurable growth.",
+  applicationName: "AdsWise Marketing",
+  keywords: [
+    "digital marketing agency in Pune",
+    "SEO company in Pune",
+    "Google Ads agency Pune",
+    "social media marketing Pune",
+    "website development Pune",
+    "branding agency Pune",
+    "performance marketing agency",
+    "AdsWise Marketing",
+    "Gaurav Jagtap",
+  ],
+  authors: [{ name: company.founder.name, url: `${company.domain}${FOUNDER_PAGE}` }],
+  creator: company.name,
+  publisher: company.name,
+  category: "Digital Marketing",
+  formatDetection: { telephone: false, email: false, address: false },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 },
+  },
   openGraph: {
     type: "website",
-    url: company.domain,
     siteName: "AdsWise Marketing",
-    title: "AdsWise Marketing | Creative Advertising & Digital Growth Agency",
+    locale: "en_IN",
+    title: "AdsWise Marketing | Digital Marketing Agency in Pune",
     description:
-      "We build creative campaigns, performance marketing and brand experiences that turn attention into growth.",
-    images: ["/images/logo.png"],
+      "Strategy-first digital marketing agency in Pune: SEO, performance ads, social media, branding and websites that turn attention into growth.",
+    images: [DEFAULT_OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AdsWise Marketing",
+    title: "AdsWise Marketing | Digital Marketing Agency in Pune",
     description:
-      "We build creative campaigns, performance marketing and brand experiences that turn attention into growth.",
-    images: ["/images/logo.png"],
+      "Strategy-first digital marketing agency in Pune: SEO, performance ads, social media, branding and websites that turn attention into growth.",
+    images: [DEFAULT_OG_IMAGE],
   },
   icons: {
     icon: "/images/logo2.png",
+    apple: "/images/logo2.png",
   },
-};
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  name: company.name,
-  url: company.domain,
-  logo: `${company.domain}/images/logo.png`,
-  email: company.email,
-  telephone: company.phone,
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: company.address.street,
-    addressLocality: company.address.city,
-    addressRegion: company.address.region,
-    postalCode: company.address.postalCode,
-    addressCountry: company.address.country,
-  },
-  sameAs: [company.social.facebook, company.social.instagram, company.social.linkedin],
+  ...(verification && { verification: { google: verification } }),
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable}`} suppressHydrationWarning>
+    <html lang="en-IN" className={`${playfair.variable} ${inter.variable}`} suppressHydrationWarning>
       <body suppressHydrationWarning>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-        <Preloader />
+        <JsonLd data={siteGraph()} />
         <CustomCursor />
+        <GlowField />
         <SmoothScroll>
           <Navbar />
           <PageTransition>

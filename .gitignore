@@ -24,3 +24,7 @@ next-env.d.ts
 *.sw?
 .env
 tsconfig.tsbuildinfo
+
+# static export output
+out
+out.zip

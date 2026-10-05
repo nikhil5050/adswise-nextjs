@@ -4,7 +4,7 @@ import MagneticButton from "@/components/animations/MagneticButton";
 
 export default function CTASection() {
   return (
-    <section className="relative overflow-hidden bg-teal/20 px-6 py-32 text-center md:px-10 md:py-48">
+    <section className="relative overflow-hidden bg-raised px-6 py-32 text-center md:px-10 md:py-48">
       <div className="mx-auto max-w-4xl">
         <RevealText
           as="h2"
@@ -19,7 +19,7 @@ export default function CTASection() {
           <MagneticButton as="div" strength={0.4}>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center rounded-full border border-white/20 px-10 py-5 text-sm uppercase tracking-widest text-ink transition-colors hover:border-sand hover:text-sand"
+              className="inline-flex items-center justify-center rounded-full border border-growth/30 px-10 py-5 text-sm uppercase tracking-widest text-ink transition-colors hover:border-growth hover:text-growth"
             >
               Start A Project
             </Link>

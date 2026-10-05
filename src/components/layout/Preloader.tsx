@@ -53,12 +53,12 @@ export default function Preloader() {
       className="fixed inset-0 z-[1000] flex flex-col items-center justify-center gap-8 bg-background"
     >
       <Image src="/images/logo.png" alt="AdsWise Marketing" width={64} height={64} priority />
-      <div className="flex items-baseline gap-2 font-display text-sm uppercase tracking-[0.3em] text-muted">
+      <div className="flex items-baseline gap-2 font-display text-sm uppercase tracking-[0.3em] text-growth">
         <span ref={countRef}>0</span>
         <span>%</span>
       </div>
-      <div className="h-px w-40 overflow-hidden bg-white/10">
-        <div ref={barRef} className="h-full w-0 bg-sand" />
+      <div className="h-px w-40 overflow-hidden bg-growth/15">
+        <div ref={barRef} className="h-full w-0 bg-growth" />
       </div>
     </div>
   );

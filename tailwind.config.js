@@ -10,14 +10,18 @@ export default {
         display: ["var(--font-display)", "serif"],
         sans: ["var(--font-sans)", "sans-serif"],
       },
+      // Adswise palette. Channels live in globals.css.
       colors: {
-        background: "#0A0A0A",
-        surface: "#1E1E1E",
-        moss: "#68735F",
-        sand: "#CBB8A0",
-        teal: "#143D4A",
-        ink: "#F3F0EA",
-        muted: "rgba(243,240,234,0.55)",
+        background: "rgb(var(--c-background) / <alpha-value>)", // Pure Black #050505
+        raised: "rgb(var(--c-raised) / <alpha-value>)", // Soft Black #0D0D0D: cards, navbar
+        surface: "rgb(var(--c-surface) / <alpha-value>)", // Soft Black #0D0D0D: section bands
+        charcoal: "rgb(var(--c-charcoal) / <alpha-value>)", // Dark Gray #181818
+        ink: "rgb(var(--c-ink) / <alpha-value>)", // Pure White #FFFFFF: headings
+        body: "rgb(var(--c-body) / <alpha-value>)", // Light Gray #A6A6A6: paragraphs
+        line: "rgb(var(--c-line) / <alpha-value>)", // Border Gray #303030
+        growth: "rgb(var(--c-growth) / <alpha-value>)", // Neon Lime #D7FF00
+        glow: "rgb(var(--c-glow) / <alpha-value>)", // Lime Glow #A8C900
+        muted: "rgb(var(--c-body) / <alpha-value>)",
       },
       letterSpacing: {
         tightest: "-0.04em",

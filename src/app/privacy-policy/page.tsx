@@ -1,12 +1,14 @@
-import type { Metadata } from "next";
 import { Mail, Phone, Globe } from "lucide-react";
 import RevealText from "@/components/animations/RevealText";
+import JsonLd from "@/components/seo/JsonLd";
+import { pageMetadata } from "@/lib/seo/metadata";
+import { breadcrumbLd } from "@/lib/seo/schema";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Privacy Policy",
-  description: "How AdsWise Marketing collects, uses and protects your information.",
-  alternates: { canonical: "/privacy-policy" },
-};
+  description: "How AdsWise Marketing collects, uses and protects your personal information.",
+  path: "/privacy-policy",
+});
 
 const USAGE = [
   "Respond to inquiries and service requests",
@@ -30,6 +32,9 @@ const MISC = [
 export default function PrivacyPolicyPage() {
   return (
     <div className="bg-background">
+      <JsonLd
+        data={breadcrumbLd([{ name: "Privacy Policy", path: "/privacy-policy" }])}
+      />
       <section className="px-6 pb-16 pt-40 md:px-10 md:pb-20 md:pt-52">
         <div className="mx-auto max-w-4xl">
           <RevealText as="h1" lines={["PRIVACY POLICY"]} className="font-display text-4xl text-ink md:text-6xl" />
@@ -37,13 +42,13 @@ export default function PrivacyPolicyPage() {
         </div>
       </section>
 
-      <section className="border-t border-white/10 px-6 py-16 md:px-10 md:py-20">
+      <section className="border-t border-ink/10 px-6 py-16 md:px-10 md:py-20">
         <div className="mx-auto flex max-w-4xl flex-col gap-12 text-sm leading-relaxed text-muted md:text-base">
           <p>
             <strong className="text-ink">AdsWise Marketing</strong> (&ldquo;we,&rdquo; &ldquo;our,&rdquo;
             &ldquo;us&rdquo;) values your trust and is committed to protecting your privacy. This Privacy
             Policy explains how we collect, use, disclose, and safeguard your information when you visit{" "}
-            <a href="https://www.adswisemarketing.com" className="text-sand hover:underline">
+            <a href="https://www.adswisemarketing.com" className="text-growth hover:underline">
               www.adswisemarketing.com
             </a>
             , use our services, or interact with us through digital platforms, advertisements, forms, emails,
@@ -58,8 +63,8 @@ export default function PrivacyPolicyPage() {
               form, request a service, or communicate with us.
             </p>
             <div className="mt-6 grid gap-6 md:grid-cols-2">
-              <div className="rounded-2xl border border-white/10 p-6">
-                <h3 className="text-sand">a) Personal Information</h3>
+              <div className="rounded-2xl border border-ink/10 p-6">
+                <h3 className="text-growth">a) Personal Information</h3>
                 <ul className="mt-3 space-y-2 text-ink/70">
                   <li>Full name &amp; company name</li>
                   <li>Email &amp; phone number</li>
@@ -68,8 +73,8 @@ export default function PrivacyPolicyPage() {
                   <li>Data submitted via WhatsApp or email</li>
                 </ul>
               </div>
-              <div className="rounded-2xl border border-white/10 p-6">
-                <h3 className="text-sand">b) Non-Personal Information</h3>
+              <div className="rounded-2xl border border-ink/10 p-6">
+                <h3 className="text-growth">b) Non-Personal Information</h3>
                 <ul className="mt-3 space-y-2 text-ink/70">
                   <li>IP address &amp; browser version</li>
                   <li>Device type &amp; pages visited</li>
@@ -86,12 +91,12 @@ export default function PrivacyPolicyPage() {
             <ul className="mt-4 grid gap-3 md:grid-cols-2">
               {USAGE.map((item) => (
                 <li key={item} className="flex items-start gap-2">
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-sand" />
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-growth" />
                   {item}
                 </li>
               ))}
             </ul>
-            <p className="mt-6 inline-block rounded-lg border border-white/10 px-4 py-2 text-ink">
+            <p className="mt-6 inline-block rounded-lg border border-ink/10 px-4 py-2 text-ink">
               We do not sell, rent, or trade personal information to third parties.
             </p>
           </div>
@@ -137,7 +142,7 @@ export default function PrivacyPolicyPage() {
             </div>
           </div>
 
-          <div className="grid gap-8 border-t border-white/10 pt-12 md:grid-cols-2">
+          <div className="grid gap-8 border-t border-ink/10 pt-12 md:grid-cols-2">
             {MISC.map((item) => (
               <div key={item.title}>
                 <h3 className="text-ink">{item.title}</h3>
@@ -146,22 +151,22 @@ export default function PrivacyPolicyPage() {
             ))}
           </div>
 
-          <div className="rounded-2xl border border-white/10 bg-surface p-10 text-center">
+          <div className="rounded-2xl border border-ink/10 bg-surface p-10 text-center">
             <h2 className="font-display text-xl text-ink">14. Contact Information</h2>
             <div className="mt-6 flex flex-col items-center justify-center gap-6 md:flex-row">
               <span className="flex items-center gap-2">
-                <Mail size={16} className="text-sand" /> office@adswisemarketing.com
+                <Mail size={16} className="text-growth" /> office@adswisemarketing.com
               </span>
               <span className="flex items-center gap-2">
-                <Phone size={16} className="text-sand" /> +91 97302 66648
+                <Phone size={16} className="text-growth" /> +91 97302 66648
               </span>
               <span className="flex items-center gap-2">
-                <Globe size={16} className="text-sand" /> www.adswisemarketing.com
+                <Globe size={16} className="text-growth" /> www.adswisemarketing.com
               </span>
             </div>
           </div>
 
-          <p className="border-t border-white/10 pt-8 text-center italic">
+          <p className="border-t border-ink/10 pt-8 text-center italic">
             By using our website and services, you acknowledge that you have read, understood, and agreed to
             this Privacy Policy.
           </p>

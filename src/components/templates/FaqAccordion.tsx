@@ -9,7 +9,7 @@ export default function FaqAccordion({ faqs }: { faqs: ServiceFaq[] }) {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <div className="divide-y divide-white/10 border-y border-white/10">
+    <div className="divide-y divide-ink/10 border-y border-ink/10">
       {faqs.map((faq, i) => (
         <div key={faq.question}>
           <button
@@ -20,7 +20,7 @@ export default function FaqAccordion({ faqs }: { faqs: ServiceFaq[] }) {
             <span className="font-display text-lg text-ink md:text-xl">{faq.question}</span>
             <Plus
               size={20}
-              className={cn("shrink-0 text-sand transition-transform duration-300", open === i && "rotate-45")}
+              className={cn("shrink-0 text-growth transition-transform duration-300", open === i && "rotate-45")}
             />
           </button>
           <div

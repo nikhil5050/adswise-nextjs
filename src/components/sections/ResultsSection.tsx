@@ -37,11 +37,11 @@ export default function ResultsSection() {
     <section ref={sectionRef} className="relative overflow-hidden bg-background px-6 py-28 md:px-10 md:py-40">
       {!reducedMotion && (
         <div className="absolute inset-0 opacity-30">
-          <PixelBlast variant="circle" color="#143D4A" pixelSize={4} patternDensity={1.1} liquid={false} />
+          <PixelBlast variant="circle" color="#A8C900" pixelSize={4} patternDensity={1.1} liquid={false} />
         </div>
       )}
       <div className="relative mx-auto max-w-6xl">
-        <p className="mb-14 text-xs uppercase tracking-[0.3em] text-muted">By The Numbers</p>
+        <p className="mb-14 text-xs uppercase tracking-[0.3em] text-growth">By The Numbers</p>
         <div className="grid grid-cols-2 gap-10 md:grid-cols-4">
           {stats.map((stat) => (
             <div key={stat.label}>

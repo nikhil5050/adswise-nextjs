@@ -27,8 +27,8 @@ function Orb() {
         <mesh ref={meshRef}>
           <icosahedronGeometry args={[1.6, 12]} />
           <MeshDistortMaterial
-            color="#143D4A"
-            emissive="#68735F"
+            color="#181818"
+            emissive="#A8C900"
             emissiveIntensity={0.25}
             roughness={0.15}
             metalness={0.6}
@@ -65,7 +65,7 @@ function Particles({ count = 400 }: { count?: number }) {
       <bufferGeometry>
         <bufferAttribute attach="attributes-position" args={[points, 3]} />
       </bufferGeometry>
-      <pointsMaterial color="#CBB8A0" size={0.02} sizeAttenuation transparent opacity={0.5} />
+      <pointsMaterial color="#D7FF00" size={0.02} sizeAttenuation transparent opacity={0.5} />
     </points>
   );
 }
@@ -84,8 +84,8 @@ export default function DigitalOrb({ reducedMotion, isMobile }: DigitalOrbProps)
       frameloop={reducedMotion ? "demand" : "always"}
     >
       <ambientLight intensity={0.6} />
-      <pointLight position={[4, 4, 4]} intensity={1.2} color="#CBB8A0" />
-      <pointLight position={[-4, -2, -3]} intensity={0.8} color="#68735F" />
+      <pointLight position={[4, 4, 4]} intensity={1.2} color="#D7FF00" />
+      <pointLight position={[-4, -2, -3]} intensity={0.8} color="#FFFFFF" />
       <Orb />
       {!isMobile && <Particles />}
       <Environment preset="city" environmentIntensity={0.3} />
