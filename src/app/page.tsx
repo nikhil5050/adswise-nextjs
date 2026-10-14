@@ -3,10 +3,12 @@ import Link from "next/link";
 import Calculator from "@/components/home/Calculator";
 import IndustryViewer from "@/components/home/IndustryViewer";
 import HighlightsCarousel from "@/components/home/HighlightsCarousel";
+import ClientsSection from "@/components/home/ClientsSection";
 import LaptopReport from "@/components/home/LaptopReport";
 import ShotInHouse from "@/components/home/ShotInHouse";
 import ScrollFillText from "@/components/home/ScrollFillText";
 import HeroText from "@/components/hero/HeroText";
+import HeroGlobe from "@/components/hero/HeroGlobe";
 import TeamFanOut from "@/components/sections/TeamFanOut";
 import JsonLd from "@/components/seo/JsonLd";
 import { pageMetadata } from "@/lib/seo/metadata";
@@ -35,13 +37,17 @@ export default function HomePage() {
       />
       {/* Hero */}
       <section className="hero">
-        <div className="wrap">
+        <div className="wrap-wide hero-grid">
           <HeroText />
+          <HeroGlobe />
         </div>
       </section>
 
       {/* Monthly report: laptop opens on scroll */}
       <LaptopReport />
+
+      {/* Clients: scrolling logo wall */}
+      <ClientsSection />
 
       {/* Highlights: cards slide sideways as you scroll */}
       <HighlightsCarousel />

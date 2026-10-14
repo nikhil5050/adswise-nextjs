@@ -1,0 +1,28 @@
+# Static export (output: "export") emits both `page.html` and a `page/` folder
+# of RSC payloads. Without these rules the server sees the folder, 301s to
+# `page/`, finds no index.html and returns 403 Forbidden.
+
+Options -MultiViews -Indexes
+DirectorySlash Off
+DirectoryIndex index.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Force https + www (matches company.domain / canonicals / sitemap)
+  RewriteCond %{HTTPS} off [OR]
+  RewriteCond %{HTTP_HOST} !^www\. [NC]
+  RewriteRule ^(.*)$ https://www.adswisemarketing.com/$1 [R=301,L]
+
+  # Drop trailing slash (canonical URLs have none), unless it's a real file
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule ^(.+)/$ /$1 [R=301,L]
+
+  # Clean URL -> exported .html file (e.g. /gauravjagtap-about -> gauravjagtap-about.html)
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+  RewriteRule ^(.+)$ /$1.html [L]
+</IfModule>
+
+ErrorDocument 404 /404.html

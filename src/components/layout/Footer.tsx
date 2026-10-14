@@ -87,7 +87,7 @@ export default function Footer() {
             <h3 className="text-xs uppercase tracking-widest text-muted">Contact</h3>
             <ul className="mt-4 space-y-3 text-sm text-ink/80">
               <li>
-                <a href={`mailto:${company.email}`} className="hover:text-growth">
+                <a href={`mailto:${company.email}`} className="break-all hover:text-growth">
                   {company.email}
                 </a>
               </li>

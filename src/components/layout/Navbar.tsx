@@ -5,10 +5,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useGSAP } from "@gsap/react";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown, Mail, Menu, MessageCircle, Phone, X } from "lucide-react";
 import { gsap } from "@/lib/animations/gsap";
 import { cn } from "@/lib/utils/cn";
 import { IndustriesMenu, MobileMenuSections, ServicesMenu } from "@/components/layout/NavMenus";
+import { company } from "@/data/company";
 
 type Dropdown = "services" | "industries";
 
@@ -44,6 +45,26 @@ export default function Navbar() {
     setOpen(false);
     setDropdown(null);
   }, [pathname]);
+
+  // While the mobile menu is open: lock page scroll, close on Escape or when resized to desktop.
+  useEffect(() => {
+    if (!open) return;
+    const html = document.documentElement;
+    const prevOverflow = html.style.overflow;
+    html.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    const desktop = window.matchMedia("(min-width: 768px)");
+    const onResize = () => desktop.matches && setOpen(false);
+    document.addEventListener("keydown", onKey);
+    desktop.addEventListener("change", onResize);
+    return () => {
+      html.style.overflow = prevOverflow;
+      document.removeEventListener("keydown", onKey);
+      desktop.removeEventListener("change", onResize);
+    };
+  }, [open]);
 
   // Close desktop dropdowns on outside click or Escape.
   useEffect(() => {
@@ -95,13 +116,18 @@ export default function Navbar() {
   };
 
   return (
+    <>
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-500",
-        scrolled || dropdown ? "border-b border-ink/10 bg-background/80 backdrop-blur-md" : "bg-transparent"
+        open
+          ? "border-b border-ink/10 bg-background"
+          : scrolled || dropdown
+            ? "border-b border-ink/10 bg-background/80 backdrop-blur-md"
+            : "bg-transparent"
       )}
     >
-      <nav ref={navRef} className="relative mx-auto flex max-w-7xl items-center justify-between px-6 py-5 md:px-10">
+      <nav ref={navRef} className="relative mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-10 md:py-5">
         <Link href="/" className="flex items-center gap-2">
           <Image src="/images/logo.png" alt="AdsWise Marketing" width={32} height={32} />
           <span className="font-display text-lg tracking-wide text-ink"> <span className="font-bold text-growth">Ads</span>Wise</span>
@@ -151,22 +177,33 @@ export default function Navbar() {
         <button
           type="button"
           aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+          aria-controls="mobile-menu"
           onClick={() => setOpen((v) => !v)}
-          className="relative z-10 text-ink md:hidden"
+          className="-mr-2 flex h-11 w-11 items-center justify-center rounded-full text-ink transition-colors hover:bg-ink/[0.06] md:hidden"
         >
-          {open ? <X size={26} /> : <Menu size={26} />}
+          {open ? <X size={24} /> : <Menu size={24} />}
         </button>
       </nav>
+    </header>
 
-      <div
-        ref={menuRef}
-        data-lenis-prevent
-        className="fixed inset-0 top-0 hidden flex-col gap-6 overflow-y-auto bg-background px-8 pb-16 pt-28"
-        style={{ clipPath: "inset(0% 0% 100% 0%)" }}
-      >
+    {/* Mobile menu lives outside <header>: the header's backdrop-filter would otherwise
+        confine this fixed overlay to the header strip once the page is scrolled. */}
+    <div
+      id="mobile-menu"
+      ref={menuRef}
+      data-lenis-prevent
+      className="fixed inset-0 z-40 hidden flex-col overflow-y-auto overscroll-contain bg-background px-5 pb-10 pt-24 md:hidden"
+      style={{ clipPath: "inset(0% 0% 100% 0%)" }}
+    >
+      <nav aria-label="Mobile" className="flex flex-col divide-y divide-ink/10 border-b border-ink/10">
         {LINKS_BEFORE.map((link) => (
           <div key={link.href} className="overflow-hidden">
-            <Link href={link.href} onClick={closeAll} className="mobile-nav-link block font-display text-4xl text-ink">
+            <Link
+              href={link.href}
+              onClick={closeAll}
+              className={cn("mobile-nav-link block py-4 font-display text-3xl", pathname === link.href ? "text-growth" : "text-ink")}
+            >
               {link.label}
             </Link>
           </div>
@@ -174,17 +211,47 @@ export default function Navbar() {
         <MobileMenuSections onNavigate={closeAll} />
         {LINKS_AFTER.map((link) => (
           <div key={link.href} className="overflow-hidden">
-            <Link href={link.href} onClick={closeAll} className="mobile-nav-link block font-display text-4xl text-ink">
+            <Link
+              href={link.href}
+              onClick={closeAll}
+              className={cn("mobile-nav-link block py-4 font-display text-3xl", pathname === link.href ? "text-growth" : "text-ink")}
+            >
               {link.label}
             </Link>
           </div>
         ))}
-        <div className="overflow-hidden pt-4">
-          <Link href="/contact" onClick={closeAll} className="mobile-nav-link block text-sm uppercase tracking-widest text-growth">
-            Let&apos;s Talk
-          </Link>
-        </div>
+      </nav>
+
+      <div className="mt-8 overflow-hidden">
+        <Link
+          href="/contact"
+          onClick={closeAll}
+          className="mobile-nav-link block rounded-full bg-growth py-4 text-center text-sm font-semibold uppercase tracking-widest text-background"
+        >
+          Let&apos;s Talk
+        </Link>
       </div>
-    </header>
+
+      <div className="mt-8 grid grid-cols-3 gap-2 text-center text-xs text-muted">
+        <a href={company.phoneHref} className="flex flex-col items-center gap-2 rounded-2xl border border-ink/10 py-4 hover:text-growth">
+          <Phone size={18} className="text-growth" />
+          Call
+        </a>
+        <a
+          href={`https://wa.me/${company.phone.replace(/\D/g, "")}`}
+          target="_blank"
+          rel="noreferrer"
+          className="flex flex-col items-center gap-2 rounded-2xl border border-ink/10 py-4 hover:text-growth"
+        >
+          <MessageCircle size={18} className="text-growth" />
+          WhatsApp
+        </a>
+        <a href={`mailto:${company.email}`} className="flex flex-col items-center gap-2 rounded-2xl border border-ink/10 py-4 hover:text-growth">
+          <Mail size={18} className="text-growth" />
+          Email
+        </a>
+      </div>
+    </div>
+    </>
   );
 }

@@ -39,7 +39,8 @@ export default function LaptopReport() {
         defaults: { ease: "none" },
         scrollTrigger: {
           trigger: ref.current,
-          start: "top top",
+          // Start while the section scrolls in, so its first screen is never an empty black frame
+          start: "top 75%",
           end: "bottom bottom",
           scrub: 0.6,
         },

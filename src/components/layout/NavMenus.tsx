@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import { servicePackages } from "@/data/service-packages";
+import { services } from "@/data/services";
 import { industryCategories, industrySegments } from "@/data/industry-categories";
 import { cn } from "@/lib/utils/cn";
 
@@ -139,81 +140,124 @@ export function MobileMenuSections({ onNavigate }: { onNavigate: () => void }) {
   const [category, setCategory] = useState<string | null>(null);
 
   const toggle = (s: "services" | "industries") => setSection((cur) => (cur === s ? null : s));
+  const headerClass = "mobile-nav-link flex w-full items-center justify-between py-4 font-display text-3xl";
 
   return (
     <>
-      <div className="overflow-hidden">
-        <button
-          type="button"
-          aria-expanded={section === "services"}
-          onClick={() => toggle("services")}
-          className="mobile-nav-link flex w-full items-center justify-between font-display text-4xl text-ink"
-        >
-          Services
-          <ChevronDown size={26} className={cn("transition-transform", section === "services" && "rotate-180")} />
-        </button>
-      </div>
-      {section === "services" && (
-        <div className="grid gap-1 border-l border-ink/10 pl-4">
-          {servicePackages.map((pkg) => (
-            <Link key={pkg.slug} href={`/services/${pkg.slug}`} onClick={onNavigate} className="py-1.5 text-base text-ink/80">
-              {pkg.name}
-            </Link>
-          ))}
-          <Link href="/services" onClick={onNavigate} className="py-1.5 text-sm text-growth">
-            Explore all services →
-          </Link>
+      <div>
+        <div className="overflow-hidden">
+          <button
+            type="button"
+            aria-expanded={section === "services"}
+            onClick={() => toggle("services")}
+            className={cn(headerClass, section === "services" ? "text-growth" : "text-ink")}
+          >
+            Services
+            <ChevronDown size={22} className={cn("transition-transform", section === "services" && "rotate-180")} />
+          </button>
         </div>
-      )}
-
-      <div className="overflow-hidden">
-        <button
-          type="button"
-          aria-expanded={section === "industries"}
-          onClick={() => toggle("industries")}
-          className="mobile-nav-link flex w-full items-center justify-between font-display text-4xl text-ink"
-        >
-          Industries
-          <ChevronDown size={26} className={cn("transition-transform", section === "industries" && "rotate-180")} />
-        </button>
-      </div>
-      {section === "industries" && (
-        <div className="grid gap-1 border-l border-ink/10 pl-4">
-          {industryCategories.map((c) => {
-            const isOpen = category === c.slug;
-            return (
-              <div key={c.slug}>
-                <button
-                  type="button"
-                  aria-expanded={isOpen}
-                  onClick={() => setCategory(isOpen ? null : c.slug)}
-                  className="flex w-full items-center justify-between gap-3 py-1.5 text-left text-base text-ink/80"
+        {section === "services" && (
+          <div className="pb-5">
+            <p className="pb-2 text-[10px] uppercase tracking-[0.25em] text-muted">Growth packages</p>
+            <div className="grid grid-cols-1 gap-1">
+              {servicePackages.map((pkg) => (
+                <Link
+                  key={pkg.slug}
+                  href={`/services/${pkg.slug}`}
+                  onClick={onNavigate}
+                  className="rounded-xl px-3 py-2.5 text-[15px] text-ink/80 transition-colors active:bg-ink/[0.06]"
                 >
-                  <span>{c.name}</span>
-                  <ChevronDown size={16} className={cn("shrink-0 transition-transform", isOpen && "rotate-180")} />
-                </button>
-                {isOpen && (
-                  <div className="grid gap-0.5 pb-2 pl-3">
-                    {c.types.map((t) => (
-                      <Link
-                        key={t.slug}
-                        href={`/industry/${c.slug}/${t.slug}`}
-                        onClick={onNavigate}
-                        className="py-1 text-sm text-muted"
-                      >
-                        {t.name}
-                      </Link>
-                    ))}
-                    <Link href={`/industry/${c.slug}`} onClick={onNavigate} className="py-1 text-sm text-growth">
-                      View all →
-                    </Link>
-                  </div>
-                )}
-              </div>
-            );
-          })}
+                  {pkg.name}
+                </Link>
+              ))}
+            </div>
+            <p className="pb-2 pt-4 text-[10px] uppercase tracking-[0.25em] text-muted">Individual services</p>
+            <div className="grid grid-cols-2 gap-1">
+              {services.map((service) => (
+                <Link
+                  key={service.slug}
+                  href={`/services/${service.slug}`}
+                  onClick={onNavigate}
+                  className="rounded-xl px-3 py-2 text-[13px] leading-snug text-ink/70 transition-colors active:bg-ink/[0.06]"
+                >
+                  {service.title}
+                </Link>
+              ))}
+            </div>
+            <Link href="/services" onClick={onNavigate} className="mt-3 block px-3 py-2 text-sm font-semibold text-growth">
+              Explore all services →
+            </Link>
+          </div>
+        )}
+      </div>
+
+      <div>
+        <div className="overflow-hidden">
+          <button
+            type="button"
+            aria-expanded={section === "industries"}
+            onClick={() => toggle("industries")}
+            className={cn(headerClass, section === "industries" ? "text-growth" : "text-ink")}
+          >
+            Industries
+            <ChevronDown size={22} className={cn("transition-transform", section === "industries" && "rotate-180")} />
+          </button>
         </div>
-      )}
+        {section === "industries" && (
+          <div className="pb-5">
+            {industrySegments.map((segment) => (
+              <div key={segment.id} className="mb-3">
+                <p className="pb-2 text-[10px] uppercase tracking-[0.25em] text-muted">{segment.label}</p>
+                <div className="grid gap-1">
+                  {industryCategories
+                    .filter((c) => c.segment === segment.id)
+                    .map((c) => {
+                      const isOpen = category === c.slug;
+                      return (
+                        <div key={c.slug} className={cn("rounded-xl", isOpen && "bg-ink/[0.04]")}>
+                          <button
+                            type="button"
+                            aria-expanded={isOpen}
+                            onClick={() => setCategory(isOpen ? null : c.slug)}
+                            className="flex w-full items-center justify-between gap-3 px-3 py-2.5 text-left text-[15px] text-ink/80"
+                          >
+                            <span>{c.name}</span>
+                            <span className="ml-auto text-[11px] text-muted">{c.types.length}</span>
+                            <ChevronDown size={16} className={cn("shrink-0 transition-transform", isOpen && "rotate-180")} />
+                          </button>
+                          {isOpen && (
+                            <div className="grid gap-0.5 px-3 pb-3">
+                              {c.types.map((t) => (
+                                <Link
+                                  key={t.slug}
+                                  href={`/industry/${c.slug}/${t.slug}`}
+                                  onClick={onNavigate}
+                                  className="rounded-lg px-2 py-1.5 text-[13px] text-muted active:bg-ink/[0.06]"
+                                >
+                                  {t.name}
+                                </Link>
+                              ))}
+                              <Link
+                                href={`/industry/${c.slug}`}
+                                onClick={onNavigate}
+                                className="px-2 py-1.5 text-[13px] font-semibold text-growth"
+                              >
+                                View all {c.name} →
+                              </Link>
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
+                </div>
+              </div>
+            ))}
+            <Link href="/industry" onClick={onNavigate} className="block px-3 py-2 text-sm font-semibold text-growth">
+              Explore all industries →
+            </Link>
+          </div>
+        )}
+      </div>
     </>
   );
 }

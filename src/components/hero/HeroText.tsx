@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/animations/gsap";
 import { useReducedMotion } from "@/lib/hooks/useReducedMotion";
-import LogoMarquee from "./LogoMarquee";
+// import LogoMarquee from "./LogoMarquee";
 
 const WA_LINK = "https://wa.me/919730266648";
 
@@ -44,21 +44,24 @@ export default function HeroText() {
   );
 
   return (
-    <div ref={ref} className="flex flex-col items-center">
-      <p className="hero-item mt-1 text-[clamp(24px,2vw,24px)] font-small tracking-[-0.02em] text-ink">
-        <span className="text-growth">Ads</span>Wise <span className="text-growth">Marketing</span> Company in Pune, India
-      </p>
-      <h1 className="hero-item text-[clamp(38px,6vw,68px)] leading-[1.05] tracking-[-0.02em] text-ink font-display font-semibold">
-       Take Your Business to More Customers
+    <div ref={ref} className="flex flex-col items-center text-center lg:items-start lg:text-left">
+      {/* Single line at every width: the size scales with the viewport instead of wrapping.
+          `!` is needed because `.home-v2 h1` / `.home-v2 a` in home.css outrank utility classes. */}
+      <h1 className="hero-item whitespace-nowrap lg:whitespace-normal !text-[clamp(20px,6vw,46px)] !leading-[1.2] tracking-[-0.02em] text-ink font-display font-semibold">
+        <span className="text-growth">Ads</span>Wise <span className="text-growth">Marketing</span> Company
       </h1>
+      <p className="hero-item mt-1 text-[clamp(24px,2vw,14px)] font-small tracking-[-0.02em] text-ink">
+        Take Your Business to More Customers
+      </p>
       
-      <p className="hero-item mx-auto mt-[18px] max-w-[640px] text-[19px] leading-[1.5] text-muted">
+      
+      <p className="hero-item mx-auto mt-[18px] max-w-[640px] lg:mx-0 text-[19px] leading-[1.5] text-muted">
         We manage your online ads, social media, Google visibility and website to help customers find your business, understand what you offer and contact you. We serve businesses across India and internationally.
       </p>
-      <div className="hero-item mt-[30px] flex flex-wrap items-center justify-center gap-4">
+      <div className="hero-item mt-[30px] flex flex-wrap items-center justify-center gap-4 lg:justify-start">
         <Link
           href="/contact"
-          className="inline-block rounded-full bg-growth px-[26px] py-3.5 text-base font-semibold text-background shadow-[0_10px_30px_rgba(215,255,0,0.25)] transition-transform duration-300 hover:scale-[1.03] hover:opacity-90"
+          className="inline-block rounded-full bg-growth px-[26px] py-3.5 font-semibold !text-black shadow-[0_10px_30px_rgba(215,255,0,0.25)] transition-transform duration-300 hover:scale-[1.03] hover:opacity-90"
         >
           Book a free growth audit
         </Link>
@@ -71,15 +74,15 @@ export default function HeroText() {
           Chat on WhatsApp
         </a>
       </div>
-      <div className="hero-item mt-[50px] w-full">
-        <p className="mb-5 text-[13px] uppercase tracking-[0.12em] text-muted">
+      <div className="hero-item mt-[2px] w-full">
+        {/* <p className="mb-5 text-[13px] uppercase tracking-[0.12em] text-muted">
           Trusted by brands across India
-        </p>
-        <LogoMarquee />
+        </p> */}
+        
       </div>
-      <div className="hero-item mt-[50px] flex flex-wrap justify-center gap-10">
+      <div className="hero-item mt-[50px] flex flex-wrap justify-center gap-10 lg:justify-start">
         {PROOF.map(({ value, label }) => (
-          <div key={label} className="text-center">
+          <div key={label} className="text-center lg:text-left">
             <strong className="block text-2xl font-bold text-ink">
               {value}
             </strong>
