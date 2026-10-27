@@ -84,6 +84,20 @@ export const team: TeamMember[] = [
     linkedin: "https://www.linkedin.com/in/komal-kumari-b7a655276",
     image: "/team/komalAdswise.jpeg",
   },
+  {
+    name: "Vaishnavi Patil",
+    role: "Digital Marketer",
+    skills: ["Research", "Campaign Strategy", "Performance Ads"],
+    linkedin: "",
+    image: "/team/vaishanvipatil.jpeg",
+  },
+  {
+    name: "Komal Ingale",
+    role: "Jr. Graphic Designer",
+    skills: ["Graphic Design", "Branding", "Visual Storytelling"],
+    linkedin: "",
+    image: "/team/komalIngale.jpeg",
+  },
 ];
 
 // Leadership trio for the "Meet our team" fan-out on the about page.
